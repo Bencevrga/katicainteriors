@@ -1,10 +1,8 @@
-import { defineConfig } from "astro/config";
-import { fileURLToPath } from "node:url";
+import { defineConfig } from 'astro/config';
 
+// https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
-  output: "static",
-  alias: {
-    "@": fileURLToPath(new URL("./src", import.meta.url)),
-  },
+  site: 'https://<felhasznaloneved>.github.io',
+  base: '/katica-interiors/',
+  outDir: 'dist',
 });
