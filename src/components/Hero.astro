@@ -1,0 +1,14 @@
+---
+import "@/styles/global.css";
+const props = Astro.props as { kicker?: string; title?: string; subtitle?: string };
+const kicker = props.kicker ?? "INTERIOR DESIGNER";
+const title = props.title ?? "KATICA";
+const subtitle = props.subtitle ?? "interior designer";
+---
+<section id="home" class="hero">
+  <div class="hero-content container">
+    <span class="hero-kicker">{kicker}</span>
+    <h1 class="hero-title">{title}</h1>
+    <div class="hero-sub">{subtitle}</div>
+  </div>
+</section>

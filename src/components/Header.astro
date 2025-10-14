@@ -1,0 +1,37 @@
+---
+import "@/styles/global.css";
+---
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Katica interior designer">
+      <img src="/uploads/logo.png" alt="UK" class="logo" />
+      <span class="brand-title">Katica <span>interior designer</span></span>
+    </a>
+
+    <button id="menuBtn" class="icon-btn" aria-label="Menü">
+      <span class="burger"></span>
+    </button>
+  </div>
+
+  <aside id="sideNav" class="side-nav" aria-hidden="true">
+    <div class="side-nav-inner">
+      <nav class="nav-links" aria-label="Oldal navigáció">
+        <a href="#services">Szolgáltatások</a>
+        <a href="#work">Munkáim</a>
+        <a href="#about">Rólam</a>
+        <a href="#contact">Kapcsolat</a>
+        <a href="/blog">Blog</a>
+      </nav>
+      <div class="meta">
+        <div>HU / EN</div>
+        <div>
+          <div>+36 00 000 0000</div>
+          <div>email@example.hu</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+</header>
+<script type="module" src="/src/scripts/header.js"></script>

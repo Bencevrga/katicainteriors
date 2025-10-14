@@ -1,0 +1,20 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/Header.astro";
+const { title = "Udvary Katica interiors", description = "Lakberendezés és home staging" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

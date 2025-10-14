@@ -1,0 +1,75 @@
+---
+import "@/styles/global.css";
+---
+
+<section id="about-contact" class="about-contact container">
+    <div class="section-sep" aria-hidden="true"></div>
+  <div class="about-contact-inner">
+    <!-- BAL: Rólam -->
+    <div class="about-text">
+      <h2 class="section-title">Rólam</h2>
+      <p>
+        Katica vagyok, belsőépítész és lakberendező, aki hisz abban, hogy
+        minden tér megérdemli a harmóniát.  
+        A célom, hogy az otthonod ne csak szép, hanem személyes és funkcionális
+        is legyen — egy hely, ahová öröm hazatérni.
+      </p>
+      <p>
+        Legyen szó új építésről, felújításról vagy csak stílusfrissítésről,
+        segítek megvalósítani az elképzeléseidet letisztult, időtálló módon.
+      </p>
+
+      <!-- Rólam kép -->
+      <div class="about-photo">
+        <img src="/uploads/about/about-photo.jpg" alt="Katica Interiors portré" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- JOBB: Kapcsolat -->
+    <div class="contact-form">
+      <h2 class="section-title">Kapcsolat</h2>
+
+      <form
+        class="contact-form-inner"
+        name="contact"
+        method="POST"
+        action="/kuldve"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none;">
+          <label>Ne töltsd ki: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-group">
+          <label for="name">Név</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Üzenet</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn send">Üzenet küldése</button>
+      </form>
+
+      <div class="contact-alt">
+        <a
+          href="https://m.me/katica.interiors"
+          target="_blank"
+          rel="noopener"
+          class="btn messenger"
+        >
+          💬 Üzenj Messengeren
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

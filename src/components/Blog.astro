@@ -1,0 +1,37 @@
+---
+import "@/styles/global.css";
+
+const posts = [
+  { slug: "minimalista-nappali-tippek", title: "Minimalista nappali: 7 tipp", excerpt: "Hogyan teremts tágas és nyugodt nappalit – anyagválasztás, színpaletta és elrendezés, valódi mintákkal.", cover: "/uploads/blog/minimalista-nappali/cover.jpg" },
+  { slug: "konyha-fenyes-anyagok", title: "Fényes felületek a konyhában", excerpt: "Praktikum és elegancia: mikor érdemes magasfényű frontokat használni, és hogyan tisztítsd őket?", cover: "/uploads/blog/fenyes-konyha/cover.jpg" },
+  { slug: "szinpaletta-beige", title: "A bézs paletta ereje", excerpt: "Miért működik ennyire jól a bézs? Árnyalatok, textúrák, párosítások, hogy ne legyen unalmas.", cover: "/uploads/blog/beige/cover.jpg" },
+  { slug: "texturak-melegek", title: "Meleg textúrák az otthonban", excerpt: "A természetes anyagokkal a hangulat is harmonikusabbá válik – tippek a rétegezéshez.", cover: "/uploads/blog/textura/cover.jpg" },
+  { slug: "vilagitas-tervezes", title: "Világítás mint dizájnelem", excerpt: "A jó fény nem csak funkció – hangulatot, fókuszt és arányokat ad a térnek.", cover: "/uploads/blog/feny/cover.jpg" },
+];
+const postUrl = (slug: string) => `/blog/${slug}`;
+---
+
+<section id="blog" class="blog container">
+    <div class="section-sep" aria-hidden="true"></div>
+  <h2 class="section-title">Blog</h2>
+
+  <div class="blog-carousel">
+    {posts.map((p, i) => (
+      <article class="blog-card" data-index={i}>
+        <img src={p.cover} alt={p.title} loading="lazy" />
+        <div class="blog-overlay">
+          <h3>{p.title}</h3>
+          <p>{p.excerpt}</p>
+          <a href={postUrl(p.slug)} class="btn more">Olvass tovább</a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="blog-navs">
+    <button class="blog-btn prev">‹</button>
+    <button class="blog-btn next">›</button>
+  </div>
+</section>
+
+<script type="module" src="/src/scripts/blog.js"></script>

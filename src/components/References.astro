@@ -1,0 +1,87 @@
+---
+import "@/styles/global.css";
+
+/** Itt add meg a referenciákat. A képek a /public/uploads/refs/... alatt legyenek. */
+const refs = [
+  {
+    slug: "nappali-budapest",
+    title: "Nappali | Budapest",
+    cover: "/uploads/refs/nappali-budapest/1.jpg",
+    images: [
+      "/uploads/refs/nappali-budapest/1.jpg",
+      "/uploads/refs/nappali-budapest/2.jpg",
+      "/uploads/refs/nappali-budapest/3.jpg",
+    ],
+  },
+  {
+    slug: "konyha-sarvar",
+    title: "Konyha | Sárvár",
+    cover: "/uploads/refs/konyha-sarvar/1.jpg",
+    images: [
+      "/uploads/refs/konyha-sarvar/1.jpg",
+      "/uploads/refs/konyha-sarvar/2.jpg",
+      "/uploads/refs/konyha-sarvar/3.jpg",
+    ],
+  },
+  {
+    slug: "haloszoba-budapest",
+    title: "Hálószoba | Bp",
+    cover: "/uploads/refs/haloszoba-budapest/1.jpg",
+    images: [
+      "/uploads/refs/haloszoba-budapest/1.jpg",
+      "/uploads/refs/haloszoba-budapest/2.jpg",
+      "/uploads/refs/haloszoba-budapest/3.jpg",
+    ],
+  },
+  {
+    slug: "furdoszoba-budapest",
+    title: "Fürdőszoba | Bp",
+    cover: "/uploads/refs/furdoszoba-budapest/1.jpg",
+    images: [
+      "/uploads/refs/furdoszoba-budapest/1.jpg",
+      "/uploads/refs/furdoszoba-budapest/2.jpg",
+      "/uploads/refs/furdoszoba-budapest/3.jpg",
+    ],
+  },
+];
+---
+<section id="references" class="refs container">
+    <div class="section-sep" aria-hidden="true"></div>
+  <h2 class="refs-title">Referenciák</h2>
+
+  <div class="refs-grid">
+    {refs.map((r, idx) => (
+      <button class="ref-card" data-ref-index={idx} aria-label={`Megnyitás: ${r.title}`}>
+        <figure>
+          <img src={r.cover} alt={r.title} loading="lazy" />
+          <figcaption>{r.title}</figcaption>
+        </figure>
+      </button>
+    ))}
+  </div>
+
+  {/* A JS innen olvassa ki a képlistákat */}
+  <script id="refs-data" type="application/json">
+    {JSON.stringify(refs)}
+  </script>
+</section>
+
+<!-- Lightbox (modális) -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Referencia galéria">
+  <div class="lb-backdrop" data-lb-close></div>
+  <div class="lb-frame">
+    <button class="lb-close" data-lb-close aria-label="Bezárás">✕</button>
+    <div class="lb-stage">
+      <button class="lb-prev" aria-label="Előző">‹</button>
+      <img id="lb-image" alt="" />
+      <button class="lb-next" aria-label="Következő">›</button>
+    </div>
+    <div class="lb-meta">
+      <span id="lb-title"></span>
+      <span id="lb-count"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Csak itt töltődjön a lightbox script -->
+<script type="module" src="/src/scripts/refs.js"></script>

@@ -1,0 +1,87 @@
+---
+import "@/styles/global.css";
+
+const year = new Date().getFullYear();
+
+const navMain = [
+  { href: "/", label: "Kezdőlap" },
+  { href: "/#services", label: "Szolgáltatások" },
+  { href: "/#references", label: "Referenciák" },
+  { href: "/#testimonials", label: "Vélemények" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "GYIK" },
+];
+
+const navServices = [
+  { href: "/szolgaltatasok/tanacsadas", label: "Tanácsadás" },
+  { href: "/szolgaltatasok/tervezes-latvanyterv-nelkul", label: "Tervezés" },
+  { href: "/szolgaltatasok/butor-tervezes", label: "Bútortervezés" },
+  { href: "/szolgaltatasok/home-staging", label: "Home Staging" },
+];
+---
+
+<footer class="site-footer">
+  <!-- finom felső elválasztó -->
+  <div class="footer-sep" aria-hidden="true"></div>
+
+  <div class="container footer-grid">
+    <!-- Brand + rövid bemutatkozás -->
+    <div class="footer-col footer-brand">
+      <a href="/" class="brand">
+        <img src="/uploads/logo.png" alt="Katica Interiors" class="logo" />
+        <span class="brand-title">Katica <span>interior designer</span></span>
+      </a>
+      <p class="footer-intro">
+        Letisztult, időtálló enteriőrök – harmonikus színek, természetes anyagok,
+        okos térszervezés. Személyre szabott tervezés az otthonod ritmusához.
+      </p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/katica.interiors" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/katica.interiors" aria-label="Instagram">ig</a>
+        <a href="https://www.pinterest.com/katica.interiors" aria-label="Pinterest">p</a>
+      </div>
+    </div>
+
+    <!-- Fő navigáció -->
+    <nav class="footer-col">
+      <h3 class="footer-head">Menü</h3>
+      <ul class="footer-list">
+        {navMain.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <!-- Szolgáltatások rövid -->
+    <nav class="footer-col">
+      <h3 class="footer-head">Szolgáltatások</h3>
+      <ul class="footer-list">
+        {navServices.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <!-- Kapcsolat -->
+    <div class="footer-col">
+      <h3 class="footer-head">Kapcsolat</h3>
+      <ul class="footer-list contact">
+        <li><a href="mailto:hello@katica-interiors.hu">hello@katica-interiors.hu</a></li>
+        <li><a href="tel:+36301234567">+36 30 123 4567</a></li>
+        <li>Budapest • HU</li>
+      </ul>
+      <div class="footer-actions">
+        <a class="btn outline" href="https://m.me/katica.interiors" target="_blank" rel="noopener">Üzenj Messengeren</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alsó sáv -->
+  <div class="footer-bottom">
+    <div class="container bottom-inner">
+      <small>© {year} Katica Interiors. Minden jog fenntartva.</small>
+      <nav class="legal">
+        <a href="/adatvedelem">Adatvédelem</a>
+        <span aria-hidden="true">•</span>
+        <a href="/impresszum">Impresszum</a>
+      </nav>
+      <a href="#top" class="to-top" aria-label="Ugrás az oldal tetejére">Fel ↑</a>
+    </div>
+  </div>
+</footer>

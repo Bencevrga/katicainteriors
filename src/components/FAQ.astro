@@ -1,0 +1,44 @@
+---
+import "@/styles/global.css";
+
+const faqs = [
+  {
+    q: "Hogyan zajlik az első konzultáció?",
+    a: "Az igények és a tér megismerésével kezdünk, majd vázlatos irányokat beszélünk át. A konzultáció lehet személyesen vagy online.",
+  },
+  {
+    q: "Vállalsz részleges tervezést is?",
+    a: "Igen. Lehet csak egy helyiséget vagy egy konkrét részfeladatot is kérni (pl. konyha, előszoba, bútortervezés).",
+  },
+  {
+    q: "Kapsz-e kedvezményt beszállítóknál?",
+    a: "Igen, több partneremnél van szakmai kedvezmény. Ezeket a projektnél átláthatóan feltüntetem.",
+  },
+  {
+    q: "Mennyi ideig tart egy átlagos projekt?",
+    a: "A terjedelemtől függ. Egy helyiség 2–4 hét, teljes lakás több szakaszban, egyeztetett ütemezéssel.",
+  },
+];
+---
+
+<section id="faq" class="faq container">
+    <div class="section-sep" aria-hidden="true"></div>
+  <h2 class="section-title">Gyakori kérdések</h2>
+
+  <div class="faq-list">
+    {faqs.map((item) => (
+      <details class="faq-item">
+        <summary class="faq-q">
+          <h3>{item.q}</h3>
+          <span class="faq-chev" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-a">
+          <p>{item.a}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- Opcionális: egyszerre csak egy kérdés legyen nyitva -->
+<script type="module" src="/src/scripts/faq.js"></script>

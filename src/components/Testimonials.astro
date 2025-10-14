@@ -1,0 +1,42 @@
+---
+import "@/styles/global.css";
+
+const testimonials = [
+  {
+    name: "Anna K.",
+    rating: 5,
+    text: "Katica tökéletesen eltalálta, amit szerettünk volna. A nappalink most igazán otthonos és letisztult.",
+  },
+  {
+    name: "Bence V.",
+    rating: 5,
+    text: "Nagyon profi, rugalmas és pontos. A konyhánk teljesen megújult, a funkcionalitás pedig 10/10.",
+  },
+  {
+    name: "Laura S.",
+    rating: 4,
+    text: "Az online konzultáció is remekül működött, minden részletre figyelt. Modern, mégis meleg atmoszférát teremtett.",
+  },
+];
+---
+
+<section id="testimonials" class="testimonials container">
+    <div class="section-sep" aria-hidden="true"></div>
+  <h2 class="section-title">Ügyfeleim mondták rólam</h2>
+
+  <div class="testimonials-grid">
+    {testimonials.map((t) => (
+      <article class="testimonial-card">
+        <div class="testimonial-stars" aria-label={`Értékelés: ${t.rating} / 5`}>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span class={i < t.rating ? "star filled" : "star"}>★</span>
+          ))}
+        </div>
+        <p class="testimonial-text">“{t.text}”</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-name">{t.name}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
