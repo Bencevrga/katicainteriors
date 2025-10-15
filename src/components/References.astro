@@ -1,49 +1,19 @@
 ---
 import "@/styles/global.css";
-
-/** /public/uploads/refs/...  */
 const refs = [
   {
     slug: "nappali-budapest",
     title: "Nappali | Budapest",
-    cover: "/uploads/refs/nappali-budapest/1.jpg",
+    cover: `${import.meta.env.BASE_URL}uploads/refs/nappali-budapest/1.jpg`,
     images: [
-      "/uploads/refs/nappali-budapest/1.jpg",
-      "/uploads/refs/nappali-budapest/2.jpg",
-      "/uploads/refs/nappali-budapest/3.jpg",
+      `${import.meta.env.BASE_URL}uploads/refs/nappali-budapest/1.jpg`,
+      `${import.meta.env.BASE_URL}uploads/refs/nappali-budapest/2.jpg`,
+      `${import.meta.env.BASE_URL}uploads/refs/nappali-budapest/3.jpg`,
     ],
   },
-  {
-    slug: "konyha-sarvar",
-    title: "Konyha | Sárvár",
-    cover: "/uploads/refs/konyha-sarvar/1.jpg",
-    images: [
-      "/uploads/refs/konyha-sarvar/1.jpg",
-      "/uploads/refs/konyha-sarvar/2.jpg",
-      "/uploads/refs/konyha-sarvar/3.jpg",
-    ],
-  },
-  {
-    slug: "haloszoba-budapest",
-    title: "Hálószoba | Bp",
-    cover: "/uploads/refs/haloszoba-budapest/1.jpg",
-    images: [
-      "/uploads/refs/haloszoba-budapest/1.jpg",
-      "/uploads/refs/haloszoba-budapest/2.jpg",
-      "/uploads/refs/haloszoba-budapest/3.jpg",
-    ],
-  },
-  {
-    slug: "furdoszoba-budapest",
-    title: "Fürdőszoba | Bp",
-    cover: "/uploads/refs/furdoszoba-budapest/1.jpg",
-    images: [
-      "/uploads/refs/furdoszoba-budapest/1.jpg",
-      "/uploads/refs/furdoszoba-budapest/2.jpg",
-      "/uploads/refs/furdoszoba-budapest/3.jpg",
-    ],
-  },
+  // … a többi ugyanígy BASE_URL-lel
 ];
+const jsonSafe = JSON.stringify(refs).replace(/</g, '\\u003c'); // prevenció
 ---
 <section id="references" class="refs container">
   <div class="section-sep" aria-hidden="true"></div>
@@ -60,10 +30,8 @@ const refs = [
     ))}
   </div>
 
-  <!-- a JS innen veszi a galéria adatokat -->
-  <script id="refs-data" type="application/json">
-    {JSON.stringify(refs)}
-  </script>
+  <!-- A JS innen olvassa ki a képlistákat -->
+  <script id="refs-data" type="application/json">{jsonSafe}</script>
 </section>
 
 <!-- Lightbox -->

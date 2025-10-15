@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="about-contact" class="about-contact container">
@@ -21,7 +22,7 @@ import "@/styles/global.css";
 
       <!-- Rólam kép -->
       <div class="about-photo">
-        <img src="/uploads/about/about-photo.jpg" alt="Katica Interiors portré" loading="lazy" />
+        <img src={`${base}uploads/about/about-photo.jpg`} alt="Katica Interiors portré" loading="lazy" />
       </div>
     </div>
 

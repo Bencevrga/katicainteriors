@@ -1,6 +1,5 @@
 ---
 import "@/styles/global.css";
-
 const services = [
   { slug: "tanacsadas", title: "Tanácsadás", excerpt: "Segítek átlátni a stílusokat..." },
   { slug: "tervezes-latvanyterv-nelkul", title: "Tervezés látványterv nélkül", excerpt: "Funkcionális és esztétikus..." },
@@ -8,6 +7,7 @@ const services = [
   { slug: "home-staging", title: "Home Staging", excerpt: "Eladás/kiadás előtt profi berendezéssel..." },
 ];
 const linkFor = (slug: string) => `/szolgaltatasok/${slug}`;
+const servicesImg = `${import.meta.env.BASE_URL}uploads/services.jpg`;
 ---
 <section id="services" class="services container">
   <div class="section-sep" aria-hidden="true"></div>
@@ -31,7 +31,7 @@ const linkFor = (slug: string) => `/szolgaltatasok/${slug}`;
 
     <aside class="services-aside">
       <figure class="services-figure">
-        <img src="/uploads/services.jpg" alt="Szolgáltatások – enteriőr" loading="lazy" />
+        <img src={servicesImg} alt="Szolgáltatások – enteriőr" loading="lazy" />
       </figure>
     </aside>
   </div>

@@ -1,10 +1,12 @@
 ---
 import "@/styles/global.css";
+import blogJsUrl from "@/scripts/blog.js?url";
+import headerJsUrl from "@/scripts/header.js?url";
 ---
 <header class="header">
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Katica interior designer">
-      <img src="/uploads/logo.png" alt="UK" class="logo" />
+      <img src={`${import.meta.env.BASE_URL}uploads/logo.png`} alt="UK" class="logo" />
       <span class="brand-title">Katica <span>interior designer</span></span>
     </a>
 
@@ -36,8 +38,6 @@ import "@/styles/global.css";
   <div id="overlay" class="overlay"></div>
 </header>
 
-<!-- FONTOS: modul import + init, NEM src="/src/..." -->
-<script type="module">
-  import initHeader from "@/scripts/header.js";
-  initHeader();
-</script>
+<!-- Inline modul import (alias-szal) -->
+<script type="module" src={blogJsUrl}></script>
+<script type="module" src={headerJsUrl}></script>

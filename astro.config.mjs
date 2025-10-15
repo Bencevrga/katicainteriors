@@ -1,8 +1,16 @@
 import { defineConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://github.com/Bencevrga/katicainteriors.git',
-  base: '/katicainteriors/',
+  site: 'https://bencevrga.github.io',   // ← saját GH Pages gyökér
+  base: '/katicainteriors/',             // ← repo neve per jellel
   outDir: 'dist',
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(fileURLToPath(new URL('./src', import.meta.url))),
+      },
+    },
+  },
 });

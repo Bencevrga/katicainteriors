@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+const base = import.meta.env.BASE_URL;
 
 const faqs = [
   { q: "Hogyan zajlik az első konzultáció?", a: "Az igények és a tér megismerésével kezdünk, majd vázlatos irányokat beszélünk át. A konzultáció lehet személyesen vagy online." },
@@ -24,8 +25,8 @@ const faqs = [
     ))}
   </div>
 </section>
-
 <script type="module">
   import initFaq from "@/scripts/faq.js";
   initFaq();
 </script>
+
