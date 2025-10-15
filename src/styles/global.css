@@ -147,7 +147,7 @@ main{ padding-top:var(--header-h) }
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/uploads/hero.jpg') center center / cover no-repeat;
+  background: url('/katicainteriors//uploads/hero.jpg') center center / cover no-repeat;
   opacity: 0.92;
   z-index: 0;
 }

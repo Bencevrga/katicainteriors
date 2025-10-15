@@ -10,11 +10,18 @@ const { title = "Udvary Katica interiors", description = "Lakberendezés és hom
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <base href={import.meta.env.BASE_URL} />
   </head>
-  <body>
+  <body id="top">
     <Header />
     <main>
       <slot />
     </main>
+
+    <!-- Opcionális: globális belső link görgetés -->
+    <script type="module">
+      import initSmoothScroll from "@/scripts/smoothScroll.js";
+      initSmoothScroll();
+    </script>
   </body>
 </html>

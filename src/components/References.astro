@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 
-/** Itt add meg a referenciákat. A képek a /public/uploads/refs/... alatt legyenek. */
+/** /public/uploads/refs/...  */
 const refs = [
   {
     slug: "nappali-budapest",
@@ -46,7 +46,7 @@ const refs = [
 ];
 ---
 <section id="references" class="refs container">
-    <div class="section-sep" aria-hidden="true"></div>
+  <div class="section-sep" aria-hidden="true"></div>
   <h2 class="refs-title">Referenciák</h2>
 
   <div class="refs-grid">
@@ -60,13 +60,13 @@ const refs = [
     ))}
   </div>
 
-  {/* A JS innen olvassa ki a képlistákat */}
+  <!-- a JS innen veszi a galéria adatokat -->
   <script id="refs-data" type="application/json">
     {JSON.stringify(refs)}
   </script>
 </section>
 
-<!-- Lightbox (modális) -->
+<!-- Lightbox -->
 <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Referencia galéria">
   <div class="lb-backdrop" data-lb-close></div>
   <div class="lb-frame">
@@ -83,5 +83,7 @@ const refs = [
   </div>
 </div>
 
-<!-- Csak itt töltődjön a lightbox script -->
-<script type="module" src="/src/scripts/refs.js"></script>
+<script type="module">
+  import initRefs from "@/scripts/refs.js";
+  initRefs();
+</script>

@@ -1,6 +1,6 @@
-// Egy időben csak egy kérdés legyen nyitva
-const root = document.querySelector(".faq-list");
-if (root) {
+export default function initFaq() {
+  const root = document.querySelector(".faq-list");
+  if (!root) return;
   const items = Array.from(root.querySelectorAll(".faq-item"));
   items.forEach((d) => {
     d.addEventListener("toggle", () => {

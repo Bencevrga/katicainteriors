@@ -17,9 +17,10 @@ import "@/styles/global.css";
     <div class="side-nav-inner">
       <nav class="nav-links" aria-label="Oldal navigáció">
         <a href="#services">Szolgáltatások</a>
-        <a href="#work">Munkáim</a>
-        <a href="#about">Rólam</a>
-        <a href="#contact">Kapcsolat</a>
+        <a href="#references">Referenciák</a>
+        <a href="#testimonials">Vélemények</a>
+        <a href="#faq">GYIK</a>
+        <a href="#about-contact">Kapcsolat</a>
         <a href="/blog">Blog</a>
       </nav>
       <div class="meta">
@@ -34,4 +35,9 @@ import "@/styles/global.css";
 
   <div id="overlay" class="overlay"></div>
 </header>
-<script type="module" src="/src/scripts/header.js"></script>
+
+<!-- FONTOS: modul import + init, NEM src="/src/..." -->
+<script type="module">
+  import initHeader from "@/scripts/header.js";
+  initHeader();
+</script>

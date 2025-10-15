@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+
 const services = [
   { slug: "tanacsadas", title: "Tanácsadás", excerpt: "Segítek átlátni a stílusokat..." },
   { slug: "tervezes-latvanyterv-nelkul", title: "Tervezés látványterv nélkül", excerpt: "Funkcionális és esztétikus..." },
@@ -9,12 +10,10 @@ const services = [
 const linkFor = (slug: string) => `/szolgaltatasok/${slug}`;
 ---
 <section id="services" class="services container">
-    <div class="section-sep" aria-hidden="true"></div>
+  <div class="section-sep" aria-hidden="true"></div>
   <div class="services-layout">
-    <!-- CÍM FELÜL, BALRA -->
     <h2 class="services-title">Szolgáltatások</h2>
 
-    <!-- BAL HASÁB: LISTA (ez igazodik a képhez) -->
     <div class="services-list">
       {services.map((s) => (
         <details class="service">
@@ -30,7 +29,6 @@ const linkFor = (slug: string) => `/szolgaltatasok/${slug}`;
       ))}
     </div>
 
-    <!-- JOBB HASÁB: KÉP -->
     <aside class="services-aside">
       <figure class="services-figure">
         <img src="/uploads/services.jpg" alt="Szolgáltatások – enteriőr" loading="lazy" />
@@ -39,4 +37,7 @@ const linkFor = (slug: string) => `/szolgaltatasok/${slug}`;
   </div>
 </section>
 
-<script type="module" src="/src/scripts/services.js"></script>
+<script type="module">
+  import initServices from "@/scripts/services.js";
+  initServices();
+</script>

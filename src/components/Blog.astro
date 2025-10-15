@@ -10,9 +10,8 @@ const posts = [
 ];
 const postUrl = (slug: string) => `/blog/${slug}`;
 ---
-
 <section id="blog" class="blog container">
-    <div class="section-sep" aria-hidden="true"></div>
+  <div class="section-sep" aria-hidden="true"></div>
   <h2 class="section-title">Blog</h2>
 
   <div class="blog-carousel">
@@ -34,4 +33,7 @@ const postUrl = (slug: string) => `/blog/${slug}`;
   </div>
 </section>
 
-<script type="module" src="/src/scripts/blog.js"></script>
+<script type="module">
+  import initBlogCarousel from "@/scripts/blog.js";
+  initBlogCarousel();
+</script>
