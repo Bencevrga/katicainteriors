@@ -73,6 +73,21 @@ img,picture,video{display:block;max-width:100%}
 .brand-title{font-size:45px; font-weight:500; letter-spacing:.04em}
 .brand-title span{font-size:25px; font-weight:400; color:var(--muted); letter-spacing:.05em; margin-left:6px}
 
+.footer-logo {
+  display: block;
+  height: 25px;          /* Itt állíthatod a méretet */
+  width: auto;           /* Megőrzi az arányt */
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* opcionális – ha kisebb képernyőn kisebb legyen */
+@media (max-width: 600px) {
+  .footer-logo {
+    height: 32px;
+  }
+}
+
 /* --- JOBB OLDAL: hamburger ikon (állandó hely, finomabb vonalköz) --- */
 .icon-btn{
   background:transparent; border:none; cursor:pointer;
