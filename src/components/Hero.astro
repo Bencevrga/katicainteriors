@@ -1,9 +1,9 @@
 ---
 import "@/styles/global.css";
 const props = Astro.props as { kicker?: string; title?: string; subtitle?: string };
-const kicker = props.kicker ?? "INTERIOR DESIGNER";
+const kicker = props.kicker ?? "";
 const title = props.title ?? "KATICA";
-const subtitle = props.subtitle ?? "interior designer";
+const subtitle = props.subtitle ?? "interior designer | lakberendező | felelős tervező";
 const heroUrl = `${import.meta.env.BASE_URL}uploads/hero.jpg`;  // ← itt készítjük
 ---
 <section id="home" class="hero" style={`--hero-url: url('${heroUrl}')`}>

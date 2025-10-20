@@ -1,0 +1,37 @@
+---
+import "@/styles/global.css";
+
+// 9 partner — a logókat tedd a /public/uploads/partners/ alá
+// Használj SVG-t, ha lehet; PNG is jó. A src BASE-aware, így GitHub Pages-en is működik.
+const partners = [
+  { name: "Partner 1", href: "https://example.com/1", logo: `${import.meta.env.BASE_URL}uploads/partners/partner1.png` },
+  { name: "Partner 2", href: "https://example.com/2", logo: `${import.meta.env.BASE_URL}uploads/partners/partner2.png` },
+  { name: "Partner 3", href: "https://example.com/3", logo: `${import.meta.env.BASE_URL}uploads/partners/partner3.png` },
+  { name: "Partner 4", href: "https://example.com/4", logo: `${import.meta.env.BASE_URL}uploads/partners/partner4.png` },
+  { name: "Partner 5", href: "https://example.com/5", logo: `${import.meta.env.BASE_URL}uploads/partners/partner5.png` },
+  { name: "Partner 6", href: "https://example.com/6", logo: `${import.meta.env.BASE_URL}uploads/partners/partner6.png` },
+  { name: "Partner 7", href: "https://example.com/7", logo: `${import.meta.env.BASE_URL}uploads/partners/partner7.png` },
+  { name: "Partner 8", href: "https://example.com/8", logo: `${import.meta.env.BASE_URL}uploads/partners/partner8.png` },
+  { name: "Partner 9", href: "https://example.com/9", logo: `${import.meta.env.BASE_URL}uploads/partners/partner9.png` },
+];
+---
+
+<section id="partners" class="partners container">
+  <div class="section-sep" aria-hidden="true"></div>
+  <h2 class="section-title">Szakmai partnerek</h2>
+
+  <div class="partners-grid">
+    {partners.map((p) => (
+      <a
+        class="partner-card"
+        href={p.href}
+        target="_blank"
+        rel="noopener"
+        aria-label={`${p.name} — weboldal megnyitása`}
+        title={p.name}
+      >
+        <img src={p.logo} alt={p.name} loading="lazy" />
+      </a>
+    ))}
+  </div>
+</section>

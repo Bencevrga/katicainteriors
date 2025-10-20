@@ -1,20 +1,32 @@
 ---
 import "@/styles/global.css";
-import blogJsUrl from "@/scripts/blog.js?url";
-import headerJsUrl from "@/scripts/header.js?url";
 ---
+
 <header class="header">
   <div class="header-inner">
+    <!-- BAL: logó + név -->
     <a class="brand" href="/" aria-label="Katica interior designer">
-      <img src={`${import.meta.env.BASE_URL}uploads/logo.png`} alt="UK" class="logo" />
+      <img src={`${import.meta.env.BASE_URL}uploads/logo.png`} alt="Katica Interiors" class="logo" />
       <span class="brand-title">Katica <span>interior designer</span></span>
     </a>
 
+    <!-- DESKTOP NAV (csak nagy kijelzőn látszik) -->
+    <nav class="nav-inline" aria-label="Fő navigáció">
+      <a href="#services">Szolgáltatások</a>
+      <a href="#references">Referenciák</a>
+      <a href="#testimonials">Vélemények</a>
+      <a href="#faq">GYIK</a>
+      <a href="#about-contact">Kapcsolat</a>
+      <a href="/blog">Blog</a>
+    </nav>
+
+    <!-- MOBIL HAMBURGER (csak kis kijelzőn látszik) -->
     <button id="menuBtn" class="icon-btn" aria-label="Menü">
       <span class="burger"></span>
     </button>
   </div>
 
+  <!-- OLDALRÓL KINYÍLÓ MENÜ (mobil) -->
   <aside id="sideNav" class="side-nav" aria-hidden="true">
     <div class="side-nav-inner">
       <nav class="nav-links" aria-label="Oldal navigáció">
@@ -38,6 +50,8 @@ import headerJsUrl from "@/scripts/header.js?url";
   <div id="overlay" class="overlay"></div>
 </header>
 
-<!-- Inline modul import (alias-szal) -->
-<script type="module" src={blogJsUrl}></script>
-<script type="module" src={headerJsUrl}></script>
+<!-- FONTOS: modul import + init -->
+<script type="module">
+  import initHeader from "@/scripts/header.js";
+  initHeader();
+</script>

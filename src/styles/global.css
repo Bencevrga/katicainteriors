@@ -197,11 +197,11 @@ main{ padding-top:var(--header-h) }
   letter-spacing: .25em;
 }
 
-/* ===== Szolgáltatások — cím felül, lista + kép alatta ===== */
+/* ===== Szolgáltatások — cím + lista + kép ===== */
 
 .services { padding-block: 100px; }
 
-/* Cím: nagyobb, vastag, BALRA, és a kép felett fut végig */
+/* Cím: nagyobb, vastag, BALRA */
 .services-title {
   margin: 0 0 20px 0;
   font-size: 46px;
@@ -214,23 +214,56 @@ main{ padding-top:var(--header-h) }
 .services-layout {
   display: grid;
   gap: 24px;
+  align-items: flex-start;
 }
 
-/* ≥1024px: 2 soros rács — 1. sor a CÍM, 2. sor LISTA | KÉP */
+/* ≥1024px: egy sorban legyen a CÍM a KÉP tetejével; alatta a LISTA | KÉP */
 @media (min-width: 1024px){
   .services-layout{
     grid-template-columns: 1.1fr .9fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
-      "title title"
+      "title aside"
       "list  aside";
-    align-items: start;           /* alapból ne középre igazítsa a sort */
+    align-items: start;
+    gap: 28px 32px;
   }
-  .services-title{ grid-area: title; margin-bottom: 10px; }
-  .services-list{ grid-area: list; align-self: center; } /* <<< csak a LISTA igazodik a képhez */
-  .services-aside{ grid-area: aside; }
+
+  /* CÍM a kép sorában, picit lejjebb húzva (finomhangolható) */
+  .services-title{
+    grid-area: title;
+    margin: 0;              /* ne tolja le a sort */
+    align-self: start;
+    padding-top: 12px;      /* ↓ ha kell, módosítsd: 8–18px */
+  }
+
+  /* LISTA a cím alatt, bal hasábban */
+  .services-list{
+    grid-area: list;
+    align-self: start;      /* ha középre szeretnéd a képmagassághoz: center */
+  }
+
+  /* KÉP jobb oldalon, sticky kerettel */
+  .services-aside{ grid-area: aside; align-self: start; }
+
+  .services-figure{
+    position: sticky;
+    top: calc(var(--header-h) + 40px);
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:16px; overflow:hidden;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+
+  .services-figure img{
+    width:100%; height:auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display:block;
+  }
 }
 
-/* Lista és kártyák (ahogy eddig, csak kicsit nagyobb címek) */
+/* Lista és kártyák */
 .services-list{ display:grid; gap:18px; }
 .service{
   border:1px solid rgba(0,0,0,.08);
@@ -276,23 +309,10 @@ main{ padding-top:var(--header-h) }
 .btn.more:hover{ background: color-mix(in oklab, var(--bg) 55%, white); border-color: rgba(0,0,0,.18); }
 .btn.more:active{ transform: translateY(1px); }
 
-/* Jobb oldali kép — sticky, elegáns keret */
+/* Kép alapértelmezetten mobilon lejjebb jelenjen meg */
 .services-aside{ display:none; }
 @media (min-width:1024px){
   .services-aside{ display:block; }
-  .services-figure{
-    position: sticky;
-    top: calc(var(--header-h) + 40px);
-    border:1px solid rgba(0,0,0,.08);
-    border-radius:16px; overflow:hidden;
-    background:var(--card); box-shadow: var(--shadow);
-  }
-  .services-figure img{
-    width:100%; height:auto;
-    aspect-ratio: 3 / 4;    /* álló, elegáns */
-    object-fit: cover;
-    display:block;
-  }
 }
 
 /* ===== Hero → Services közti extra tér és enyhe elválasztó ===== */
@@ -404,7 +424,7 @@ main{ padding-top:var(--header-h) }
 .services-title,
 .refs-title {
   margin: 0 0 40px 0;
-  font-size: 46px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -921,4 +941,176 @@ main{ padding-top:var(--header-h) }
 @media (max-width: 780px){
   .bottom-inner { grid-template-columns: 1fr; justify-items: start; gap: 8px; }
   .to-top { margin-left: 0; }
+}
+
+/* ===== Top bar: desktop nav vs mobil hamburger ===== */
+
+/* Alapértelmezés: mobil-first → inline nav rejtve, hamburger látszik */
+.nav-inline {
+  display: none;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 28px);
+  margin-left: auto; /* brand után jobbra igazítjuk */
+}
+
+.nav-inline a {
+  font-size: 20px;
+  letter-spacing: .03em;
+  text-decoration: none;
+  color: var(--ink);
+  opacity: .85;
+  padding: 8px 2px;
+  border-bottom: 1px solid transparent;
+  transition: opacity .2s ease, border-color .2s ease;
+}
+.nav-inline a:hover {
+  opacity: 1;
+  border-color: rgba(0,0,0,.18);
+}
+
+/* >= 992px: desktop nézet — inline nav látszik, hamburger eltűnik, side-nav nem használatos */
+@media (min-width: 992px) {
+  .nav-inline { display: flex; }
+  #menuBtn { display: none; }
+  /* mobil side-nav állapotok biztos, ami biztos: */
+  .side-nav { right: -9999px; }
+  .overlay { opacity: 0 !important; pointer-events: none !important; }
+}
+
+/* ===== Instagram grid (3×3, 1:1) ===== */
+.instagram { padding-block: 100px; }
+
+.ig-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .ig-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .ig-grid { grid-template-columns: 1fr; }
+}
+
+.ig-post {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,.08);
+  aspect-ratio: 1 / 1;               /* négyzet */
+  background: var(--card);
+}
+
+.ig-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.001);
+  transition: transform .4s ease;
+}
+
+.ig-overlay {
+  position: absolute;
+  inset: 0;
+  /* Instagram-szerű lila-narancs-rózsaszín gradient */
+  background: linear-gradient(180deg, rgba(131,58,180,0) 0%, rgba(253,29,29,0.0) 40%, rgba(252,176,69,0.55) 100%);
+  opacity: 0;
+  transition: opacity .3s ease;
+  display: grid;
+  place-items: center;
+}
+
+.ig-icon {
+  width: 44px;
+  height: 44px;
+  fill: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+  transform: translateY(6px);
+  transition: transform .25s ease;
+}
+
+.ig-post:hover img { transform: scale(1.05); }
+.ig-post:hover .ig-overlay { opacity: 1; }
+.ig-post:hover .ig-icon { transform: translateY(0); }
+
+/* ===== Partners (3×3 logórács) ===== */
+.partners { padding-block: 100px; }
+
+.partners-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .partners-grid { grid-template-columns: 1fr; }
+}
+
+.partner-card {
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3vw, 28px);
+  height: 140px;                 /* egységes blokkmagasság */
+  transition: transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.partner-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  border-color: rgba(0,0,0,.14);
+}
+
+/* logók: szépen beférjenek, nem torzulnak */
+.partner-card img {
+  max-width: 80%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);     /* elegáns, egységes megjelenés */
+  opacity: .9;
+  transition: filter .2s ease, opacity .2s ease;
+}
+.partner-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ===== CTA (Hero és Services között) ===== */
+.cta {
+  padding-top: 90px;    /* csak egy kis tér a hero után */
+  padding-bottom: 0px; /* kisebb térköz a services előtt */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ugyanaz a stílus, mint a többi gomb */
+.cta .btn.more {
+  font-size: 30px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: color-mix(in oklab, var(--bg) 70%, white);
+  letter-spacing: .03em;
+  transition: background .2s, transform .06s, border-color .2s;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.cta .btn.more:hover {
+  background: color-mix(in oklab, var(--bg) 55%, white);
+  border-color: rgba(0,0,0,.18);
+}
+
+.cta .btn.more:active {
+  transform: translateY(1px);
 }
